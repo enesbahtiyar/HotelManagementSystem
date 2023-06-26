@@ -24,7 +24,7 @@ public class HotelServiceImplementation implements HotelService
         System.out.println("Enter Hotel ID");
         Long id = scanner.nextLong();
         hotel.setId(id);
-
+        scanner.nextLine();//consume next line
         System.out.println("Enter hotel name");
         String name = scanner.nextLine();
         hotel.setName(name);

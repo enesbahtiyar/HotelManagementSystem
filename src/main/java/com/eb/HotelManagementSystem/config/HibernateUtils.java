@@ -15,7 +15,8 @@ public class HibernateUtils
     {
         try
         {
-            Configuration configuration = new Configuration().configure("Hibernate.cfg.xml");
+            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+            sessionFactory = configuration.buildSessionFactory();
         }catch (Throwable e)
         {
             System.err.println("Exception when creating configuration" + e);
