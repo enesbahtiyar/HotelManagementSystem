@@ -33,6 +33,11 @@
         <property name="format_sql">true</property>
 
 
+        <!-- Mapping entity classes -->
+
+        <mapping class="com.eb.HotelManagementSystem.model.Hotel"/>
+        <mapping class="com.eb.HotelManagementSystem.model.Room"/>
+
     </session-factory>
 
 </hibernate-configuration>
