@@ -77,15 +77,19 @@ public class HotelManagementSystemService
                 case 2:
                     // //step 14e:findHotelById
                     System.out.println("Enter the hotel ID: ");
+                    Long hotelId = scanner.nextLong();
+                    hotelService.findHotelById(hotelId);
                     break;
                 case 3:
                     ////step 15e :deleteHotelById
                     System.out.print("Enter the hotel ID to delete: ");
-
+                    Long deleteHotelId  =scanner.nextLong();
+                    hotelService.deleteHotelById(deleteHotelId);
                     break;
                 case 4:
                     //step 16e: findAllHotels
                     System.out.println("==== Find All Hotels ====");
+                    hotelService.findAllHotels();
                     break;
                 case 5:
                     //step 17e: updateHotelById
