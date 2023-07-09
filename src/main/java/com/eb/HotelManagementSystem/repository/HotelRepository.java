@@ -13,6 +13,7 @@ public interface HotelRepository
 
     void deleteHotelById(Long id);
 
-
     List<Hotel> findAllHotels();
+
+    void updateHotel(Hotel existingHotel);
 }

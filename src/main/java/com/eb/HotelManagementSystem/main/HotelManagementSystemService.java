@@ -1,5 +1,7 @@
 package com.eb.HotelManagementSystem.main;
 
+import com.eb.HotelManagementSystem.exception.HotelResourceNotFoundException;
+import com.eb.HotelManagementSystem.model.Hotel;
 import com.eb.HotelManagementSystem.repository.*;
 import com.eb.HotelManagementSystem.service.*;
 
@@ -96,6 +98,29 @@ public class HotelManagementSystemService
                 case 5:
                     System.out.println("==== Update Hotel By ID ====");
 
+                    System.out.println("Enter the hotel id");
+                    Long id = scanner.nextLong();
+
+                    System.out.println("Please enter the updated hotel name");
+                    String name = scanner.nextLine();
+
+                    System.out.println("Please enter the updated hotel location");
+                    String location = scanner.nextLine();
+
+                    Hotel updatedHotel = new Hotel();
+
+                    try
+                    {
+                        updatedHotel.setId(id);
+                        updatedHotel.setName(name);
+                        updatedHotel.setName(location);
+
+                        hotelService.updateHotelById(id, updatedHotel);
+                    }
+                    catch (HotelResourceNotFoundException e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 6:
                     exit = true;
