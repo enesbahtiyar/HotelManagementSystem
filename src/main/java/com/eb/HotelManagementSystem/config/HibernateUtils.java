@@ -1,7 +1,5 @@
 package com.eb.HotelManagementSystem.config;
 
-import com.eb.HotelManagementSystem.model.Hotel;
-import com.eb.HotelManagementSystem.model.Room;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

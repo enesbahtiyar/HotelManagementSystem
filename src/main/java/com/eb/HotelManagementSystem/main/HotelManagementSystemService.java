@@ -1,13 +1,7 @@
 package com.eb.HotelManagementSystem.main;
 
-import com.eb.HotelManagementSystem.repository.HotelRepository;
-import com.eb.HotelManagementSystem.repository.HotelRepositoryImplementation;
-import com.eb.HotelManagementSystem.repository.RoomRepository;
-import com.eb.HotelManagementSystem.repository.RoomRepositoryImplementation;
-import com.eb.HotelManagementSystem.service.HotelService;
-import com.eb.HotelManagementSystem.service.HotelServiceImplementation;
-import com.eb.HotelManagementSystem.service.RoomService;
-import com.eb.HotelManagementSystem.service.RoomServiceImplementation;
+import com.eb.HotelManagementSystem.repository.*;
+import com.eb.HotelManagementSystem.service.*;
 
 import java.util.Scanner;
 
@@ -24,6 +18,10 @@ public class HotelManagementSystemService
 
         RoomRepository roomRepository= new RoomRepositoryImplementation();
         RoomService roomService = new RoomServiceImplementation(roomRepository,hotelRepository);
+
+
+        GuestRepository guestRepository = new GuestRepositoryImplementation();
+        GuestService guestService = new GuestServiceImplementation(guestRepository);
 
         boolean exit = false;
         while (!exit)
@@ -46,7 +44,7 @@ public class HotelManagementSystemService
                     displayRoomOperationMenu(roomService);
                     break;
                 case 3:
-                    displayGuestOperationMenu();
+                    displayGuestOperationMenu(guestService);
                     break;
                 case 4:
                     displayReservationOperationMenu();
@@ -149,8 +147,44 @@ public class HotelManagementSystemService
         }
     }
 
-    public static void displayGuestOperationMenu()
+    public static void displayGuestOperationMenu(GuestService guestService)
     {
+        boolean exit = false;
+        while (!exit)
+        {
+            System.out.println("==== Guest Operations ====");
+            System.out.println("1. Add a new guest");
+            System.out.println("2. Find Guest By ID");
+            System.out.println("3. Delete Guest By ID");
+            System.out.println("4. Find All Guests");
+            System.out.println("5. Return to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    System.out.println("==== Add New Guest ====");
+                    guestService.saveGuest();
+                    break;
+                case 2:
+                    System.out.print("Enter the Guest ID to Find: ");
+                    break;
+                case 3:
+                    System.out.println("==== Delete Guest By ID ====");
+                    break;
+                case 4:
+                    System.out.println("==== Find All Guests ====");
+                    break;
+                case 5:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
 
     }
 
