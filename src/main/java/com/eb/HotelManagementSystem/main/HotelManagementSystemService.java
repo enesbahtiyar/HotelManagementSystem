@@ -100,6 +100,7 @@ public class HotelManagementSystemService
 
                     System.out.println("Enter the hotel id");
                     Long id = scanner.nextLong();
+                    scanner.nextLine(); //consumes next line
 
                     System.out.println("Please enter the updated hotel name");
                     String name = scanner.nextLine();
