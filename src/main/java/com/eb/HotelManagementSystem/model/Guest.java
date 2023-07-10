@@ -2,6 +2,8 @@ package com.eb.HotelManagementSystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_Guests")
@@ -17,8 +19,10 @@ public class Guest {
     @Embedded
     private Address address;
 
-
     private LocalDateTime createdDate;// we want see persist /save date
+
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    List<Guest> guests = new ArrayList<>();
 
     @PrePersist
     public void PrePersist(){

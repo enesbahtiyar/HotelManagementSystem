@@ -39,6 +39,7 @@
         <mapping class="com.eb.HotelManagementSystem.model.Room"/>
         <mapping class="com.eb.HotelManagementSystem.model.Guest"/>
         <mapping class="com.eb.HotelManagementSystem.model.Address"/>
+        <mapping class="com.eb.HotelManagementSystem.model.Reservation"/>
 
     </session-factory>
 

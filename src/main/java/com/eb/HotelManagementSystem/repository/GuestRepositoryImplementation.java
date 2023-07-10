@@ -36,4 +36,11 @@ public class GuestRepositoryImplementation implements GuestRepository
             e.printStackTrace();
         }
     }
+
+    @Override
+    public Guest findGuestById(Long guestId)
+    {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        return session.get(Guest.class, guestId);
+    }
 }

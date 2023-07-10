@@ -5,4 +5,6 @@ import com.eb.HotelManagementSystem.model.Guest;
 public interface GuestService
 {
     Guest saveGuest();
+
+    void findGuestById(Long id);
 }

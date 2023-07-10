@@ -1,6 +1,8 @@
 package com.eb.HotelManagementSystem.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NavigableMap;
 
 @Entity
@@ -20,6 +22,9 @@ public class Room
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
+
+    @OneToMany(mappedBy = "room")
+    List<Reservation> reservations = new ArrayList<>();
 
     public Room(Long id, String number, int capacity, Hotel hotel) {
         this.id = id;

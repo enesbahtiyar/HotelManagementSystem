@@ -1,5 +1,6 @@
 package com.eb.HotelManagementSystem.service;
 
+import com.eb.HotelManagementSystem.exception.GuestResourceNotFoundException;
 import com.eb.HotelManagementSystem.model.Address;
 import com.eb.HotelManagementSystem.model.Guest;
 import com.eb.HotelManagementSystem.repository.GuestRepository;
@@ -45,5 +46,28 @@ public class GuestServiceImplementation implements GuestService
         System.out.println("Guest successfully saved. Guest Id: " + guest.getId());
 
         return guest;
+    }
+
+    @Override
+    public void findGuestById(Long id)
+    {
+        try
+        {
+            Guest foundGuest = guestRepository.findGuestById(id);
+
+            if(foundGuest != null)
+            {
+                System.out.println("------------------------");
+                System.out.println(foundGuest);
+            }
+            else
+            {
+                throw new GuestResourceNotFoundException("Guest could not be found with id: " + id);
+            }
+        }
+        catch (GuestResourceNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
