@@ -1,6 +1,7 @@
 package com.eb.HotelManagementSystem.service;
 
 import com.eb.HotelManagementSystem.exception.HotelResourceNotFoundException;
+import com.eb.HotelManagementSystem.exception.RoomResourceNotFoundException;
 import com.eb.HotelManagementSystem.model.Hotel;
 import com.eb.HotelManagementSystem.model.Room;
 import com.eb.HotelManagementSystem.repository.HotelRepository;
@@ -60,5 +61,31 @@ public class RoomServiceImplementation implements RoomService
             System.out.println(e.getMessage());
         }
         return room;
+    }
+
+
+    @Override
+    public Room findRoomById(Long roomId)
+    {
+        try
+        {
+            Room room = roomRepository.findRoomById(roomId);
+
+            if(room != null)
+            {
+                System.out.println("------------------");
+                return room;
+            }
+            else
+            {
+                throw new RoomResourceNotFoundException("Room could not be found with id: " + roomId);
+            }
+        }
+        catch (RoomResourceNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
     }
 }

@@ -155,6 +155,9 @@ public class HotelManagementSystemService
                     break;
                 case 2:
                     System.out.print("Enter the Room ID to Find: ");
+                    Long roomId = scanner.nextLong();
+                    roomService.findRoomById(roomId);
+
                     break;
                 case 3:
                     System.out.println("==== Delete Room By ID ====");
